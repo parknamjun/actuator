@@ -1,0 +1,22 @@
+management:
+  endpoint:
+    health:
+      enabled: true
+      show-components: always
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+info:
+  app:
+    name: hello-actuator
+    company: eahn
+
+logging:
+  level:
+    hello.controller: debug
+
+server:
+  port: 8888
