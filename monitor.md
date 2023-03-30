@@ -27,7 +27,7 @@ management.endpoint.metrics.enabled=true
 management.server.port=9980 #VPC내부에서만 접근 가능하게 포트를 분리함
 ```
 
-* java com.bigwheel.pos.api.config.SecurityConfig "/actuator/**" 추가
+* java com.....api.config.SecurityConfig "/actuator/**" 추가
 ```java
   public void configure(WebSecurity web) {
   web.ignoring().antMatchers("/v2/api-docs"
