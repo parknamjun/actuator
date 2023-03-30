@@ -33,7 +33,7 @@
 ```
 
 * conf/hbase-env.cmd
-* wsl에서 사용중인것에 윈도우에서 localhost로 접속하려면 -Djava.net.preferIPv4Stack=true를 사용해야 함
+* wsl ipv6에 윈도우에서 localhost로 접속하려면 -Djava.net.preferIPv4Stack=true를 사용해야 함
 ```text
 set JAVA_HOME=/usr/bin/jdk1.8.0_261
 set HBASE_OPTS="-Djava.net.preferIPv4Stack=true"
@@ -145,7 +145,7 @@ profiler.sampling.counting.sampling-rate=1
 #
 ```
 
-  * /home/ubuntu/pinpoint/pinpoint-agent-2.5.0/profiles/release/pinpoint.config, local 둘다 동일하게..운영은 
+  * /home/ubuntu/pinpoint/pinpoint-agent-2.5.0/profiles/release/pinpoint.config, 사용하는 profile에서 수정 
 ```text
 ###########################################################
 # gRPC Configuration                                      #
@@ -161,6 +161,12 @@ profiler.collector.ip=127.0.0.1 #collector server
 # eg. 1: 100%      20: 5%       100:1%
 profiler.sampling.counting.sampling-rate=1
 
+
+###########################################################
+# TOMCAT                                                  #
+###########################################################
+# Support ant style pattern. e.g. /aa/*.html, /??/exclude.html
+profiler.tomcat.excludeurl=/favicon.ico,/actuator/**,/static/**
 ```
 
 ### pinpoint start
@@ -203,6 +209,5 @@ export CATALINA_OPTS="$CATALINA_OPTS -Dpinpoint.applicationName=api-development"
 * intellij vm options
 ```text
 -javaagent:x:\application\pinpoint\pinpoint-agent-2.5.0\pinpoint-bootstrap-2.5.0.jar -Dpinpoint.agentId=park.api.dev -Dpinpoint.applicationName=park.api.development
-
 ```
 
